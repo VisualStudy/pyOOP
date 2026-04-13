@@ -5,7 +5,7 @@
        self.grade = grade
 
     def intro(self, greeting):
-        print(f"이름은 {self.name}이고 나이는 {self.age}살이며 학점은 {self.grade}입니다.")
+        print(f"{greeting}, 이름은 {self.name}이고 나이는 {self.age}살이며 학점은 {self.grade}입니다.")
 
 p1 = FirstClass("david", 40, 4.5) # 개체 생성
 
