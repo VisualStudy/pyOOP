@@ -4,6 +4,13 @@
        self.age = age
        self.grade = grade
 
+    def age_get(self):
+        return self.age
+
+    def age_set(self, age):
+        if age >= 0:
+            self.age = age
+
     def intro(self, greeting):
         print(f"{greeting}, 이름은 {self.name}이고 나이는 {self.age}살이며 학점은 {self.grade}입니다.")
 
@@ -15,6 +22,17 @@ print(p1.age)
 print(p1.grade)
 
 p1.intro("안녕하세요!")
+
+print("구분선-----------------------------------")
+
+# 접근자(getter)와 설정자(setter)
+print(p1.age_get())
+p1.age_set(10)
+print(p1.age)
+print(p1.age_get())
+
+# 인스턴스 변수 직접 접근
+
 
 print("구분선----------------------------\n")
 
