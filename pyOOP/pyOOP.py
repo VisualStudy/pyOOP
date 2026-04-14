@@ -18,11 +18,11 @@ p1.intro("안녕하세요!")
 
 print("구분선----------------------------\n")
 
-list = [10, "x", 30, "y"]
+list = [10, "x", 30, "y"] # 리스트 작성
 print(list[0])
 print(list[1])
 print(list[-1])
-print(list[:])
+print(list[:])            # 슬라이싱은 새로운 리스트 생성과 동일: [ ]와 " " 같이 출력
 print(list[:2])
 print(list[1:])
 print(list[::2])
