@@ -37,6 +37,32 @@ p1.age = 15
 print(p1.age)
 print(p1.age_get())
 
+# 관습상 private 멤버 변수를 지닌 클래스
+class secret:
+    def __init__(self, name, age):
+        self._name = name
+        self._age = age
+        self._dummy = 10 # 인스턴스 변수
+
+    def age_set(self, age):
+        self._age = age
+
+    def age_get(self):
+        return self._age
+
+    def name_get(self):
+        return self._name
+
+print("구분선-------------------------------------")
+kingsman = secret("에그시", 20)
+print(kingsman.age_get())
+print(kingsman.name_get())
+kingsman.age_set(30)
+print(kingsman._age)
+print(kingsman.age_get())
+
+x = kingsman.age_get()
+print(x)
 
 print("구분선----------------------------\n")
 
