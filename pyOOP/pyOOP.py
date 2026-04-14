@@ -32,6 +32,7 @@ print(p1.age)
 print(p1.age_get())
 
 # 인스턴스 변수 직접 접근
+print("인스턴스 변수 직접 접근")
 p1.age = 15
 print(p1.age)
 print(p1.age_get())
