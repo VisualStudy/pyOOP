@@ -26,12 +26,15 @@ p1.intro("안녕하세요!")
 print("구분선-----------------------------------")
 
 # 접근자(getter)와 설정자(setter)
-print(p1.age_get())
+print(p1.age_get()) # 접근자(getter)는 메서드이므로 절대로 소괄호를 빼먹으면 안 된다!
 p1.age_set(10)
 print(p1.age)
 print(p1.age_get())
 
 # 인스턴스 변수 직접 접근
+p1.age = 15
+print(p1.age)
+print(p1.age_get())
 
 
 print("구분선----------------------------\n")
