@@ -15,3 +15,16 @@ print(p1.age)
 print(p1.grade)
 
 p1.intro("안녕하세요!")
+
+print("구분선----------------------------\n")
+
+list = [10, "x", 30, "y"]
+print(list[0])
+print(list[1])
+print(list[-1])
+print(list[:])
+print(list[:2])
+print(list[1:])
+print(list[::2])
+print(list[1:2:2])
+print(list[1::2])
