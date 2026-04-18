@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f66d5ca4-44a2-44fb-85f4-4119070cf40e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>tk_class.py</StartupFile>
+    <StartupFile>main_module.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="main_module.py" />
     <Compile Include="pyOOP.py" />
+    <Compile Include="square.py" />
     <Compile Include="tk_class.py" />
     <Compile Include="tk_gui.py" />
   </ItemGroup>
