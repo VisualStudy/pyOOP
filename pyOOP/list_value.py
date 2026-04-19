@@ -15,3 +15,8 @@ value2[1] = 90
 
 print(value)
 print(value2)
+
+value3 = sorted(value2)
+value3[2] = 999
+print(value2)
+print(value3)
