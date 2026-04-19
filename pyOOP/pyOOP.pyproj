@@ -22,6 +22,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="list_value.py" />
+    <Compile Include="magic_method.py" />
     <Compile Include="main_module.py" />
     <Compile Include="main_package.py" />
     <Compile Include="callpkg\module_area.py" />

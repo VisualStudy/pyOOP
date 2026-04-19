@@ -18,3 +18,4 @@
 a1 = Secret("byum", 21)
 
 print(a1.age_get())
+# private 접근 불가: print(a1.__age)
