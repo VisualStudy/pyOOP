@@ -1,4 +1,5 @@
-﻿from operation import my_sum, my_minus
+﻿from callpkg.operation import *
+import callpkg.module_area
 
-x = my_sum(10, 10)
+x = callpkg.operation.my_sum(10, 10)
 print(x)
