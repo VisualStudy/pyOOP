@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f66d5ca4-44a2-44fb-85f4-4119070cf40e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>list_value.py</StartupFile>
+    <StartupFile>two_dimension_list.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -30,6 +30,7 @@
     <Compile Include="square.py" />
     <Compile Include="tk_class.py" />
     <Compile Include="tk_gui.py" />
+    <Compile Include="two_dimension_list.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="callpkg\" />
