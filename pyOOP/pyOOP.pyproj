@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f66d5ca4-44a2-44fb-85f4-4119070cf40e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>two_dimension_list.py</StartupFile>
+    <StartupFile>private_class.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -26,6 +26,7 @@
     <Compile Include="main_package.py" />
     <Compile Include="callpkg\module_area.py" />
     <Compile Include="callpkg\operation.py" />
+    <Compile Include="private_class.py" />
     <Compile Include="pyOOP.py" />
     <Compile Include="square.py" />
     <Compile Include="tk_class.py" />
