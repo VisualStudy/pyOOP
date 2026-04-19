@@ -10,6 +10,7 @@
 
     def __str__(self):
         return 'Point('+str(self.x)+', '+str(self.y)+')'
+        # return "결과 보여주기 싫음!"
 
 p1 = Point(1, 2)
 p2 = Point(3, 4)
