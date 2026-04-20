@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f66d5ca4-44a2-44fb-85f4-4119070cf40e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>magic_method.py</StartupFile>
+    <StartupFile>class_magic.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,6 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="class_magic.py" />
     <Compile Include="list_value.py" />
     <Compile Include="magic_method.py" />
     <Compile Include="main_module.py" />
