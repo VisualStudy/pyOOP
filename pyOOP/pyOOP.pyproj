@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f66d5ca4-44a2-44fb-85f4-4119070cf40e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>class_magic.py</StartupFile>
+    <StartupFile>print_parameter_end.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -28,6 +28,7 @@
     <Compile Include="main_package.py" />
     <Compile Include="callpkg\module_area.py" />
     <Compile Include="callpkg\operation.py" />
+    <Compile Include="print_parameter_end.py" />
     <Compile Include="private_class.py" />
     <Compile Include="pyOOP.py" />
     <Compile Include="square.py" />
