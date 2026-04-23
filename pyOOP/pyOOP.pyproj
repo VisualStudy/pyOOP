@@ -35,6 +35,7 @@
     <Compile Include="tk_class.py" />
     <Compile Include="tk_gui.py" />
     <Compile Include="two_dimension_list.py" />
+    <Compile Include="variable.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="callpkg\" />
