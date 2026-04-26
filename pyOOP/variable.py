@@ -10,3 +10,5 @@ def sum(a, b):
 rel = sum(x, y)
 
 print(rel)
+
+mine = int(input("숫자 입력: "))
