@@ -12,3 +12,5 @@ rel = sum(x, y)
 print(rel)
 
 mine = int(input("숫자 입력: "))
+
+print(pi)
