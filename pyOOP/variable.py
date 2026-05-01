@@ -13,7 +13,5 @@ print(rel)
 
 mine = int(input("숫자 입력: "))
 
-print(pi)
-
 if True:
     print("Okay")
