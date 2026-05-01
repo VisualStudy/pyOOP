@@ -1,5 +1,20 @@
 ﻿from tkinter import *
-from types import new_class
+from tkinter import messagebox
+
+def new_file():
+    messagebox.showinfo("New", "새 파일을 만듭니다.")
+
+def open_file():
+    messagebox.showinfo("Open", "파일을 엽니다.")
+
+def save_file():
+    messagebox.showinfo("Save", "파일을 저장합니다.")
+
+def exit_app():
+    root.quit()
+
+def show_about():
+    messagebox.showinfo("About", "Tkinter Menu Example\n메뉴 예제 프로그램입니다.")
 
 # 메인 윈도우 생성
 root = Tk()
