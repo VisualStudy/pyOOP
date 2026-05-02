@@ -1,5 +1,6 @@
 ﻿from tkinter import *
 from tkinter import messagebox
+# 명쾌한 답을 찾아서
 
 def new_file():
     messagebox.showinfo("New", "새 파일을 만듭니다.")
