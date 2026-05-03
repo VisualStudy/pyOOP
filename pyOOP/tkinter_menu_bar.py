@@ -1,5 +1,5 @@
 ﻿from tkinter import *
-from tkinter import messagebox
+from tkinter import messagebox # 메시지박스는 하위 모듈이라 *로 안 불러와짐. 따로 불러와야 한다!
 # 명쾌한 답을 찾아서
 
 def new_file():
