@@ -21,6 +21,7 @@ def show_about():
 root = Tk()
 root.title("Tkinter 메뉴 예제")
 root.geometry("500x300")
+# 창 크기 조절 가능
 root.resizable(True, True)
 
 # 메뉴 바 생성
