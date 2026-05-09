@@ -46,7 +46,7 @@ help_menu.add_command(label="About", command=show_about)
 menu_bar.add_cascade(label="Help", menu=help_menu)
 
 # 윈도우에 메뉴 바 연결
-root.config(menu=menu_bar)
+root.config(menu = menu_bar)
 
 # 화면에 표시할 라벨
 label = Label(root, text="상단 메뉴에서 File 또는 Help를 선택하시오.", font=("Arial", 14))
