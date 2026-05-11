@@ -6,5 +6,6 @@ wnd.resizable(True, True)
 
 MyMenu = Menu(wnd)
 menu1 = Menu(MyMenu, tearoff = 0)
+frame = Frame()
 
 wnd.mainloop()
