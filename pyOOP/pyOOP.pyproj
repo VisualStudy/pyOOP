@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f66d5ca4-44a2-44fb-85f4-4119070cf40e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>tkinter_menu_bar.py</StartupFile>
+    <StartupFile>recursive_factorial.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -31,6 +31,7 @@
     <Compile Include="print_parameter_end.py" />
     <Compile Include="private_class.py" />
     <Compile Include="pyOOP.py" />
+    <Compile Include="recursive_factorial.py" />
     <Compile Include="square.py" />
     <Compile Include="tkinter_menu_bar.py" />
     <Compile Include="tkinter_menu_creat.py" />
