@@ -22,6 +22,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="class_magic.py" />
+    <Compile Include="fibo.py" />
     <Compile Include="list_value.py" />
     <Compile Include="magic_method.py" />
     <Compile Include="main_module.py" />
