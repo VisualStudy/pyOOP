@@ -3507,3 +3507,494 @@ print(message_print)
 ```text
 함수 안에 print()가 이미 있다면 print(함수())로 감싸지 말고 그냥 함수()로 호출한다.
 ```
+
+# 파이썬 인터프리터
+---
+# Python 인터프리터와 함수 정의, 전역 변수 접근 원리
+
+## 1. 의문점
+
+Python은 보통 인터프리터 언어라고 배운다.
+
+그래서 다음과 같은 의문이 생길 수 있다.
+
+```python
+def print_message():
+    print(message)
+
+message = "Hello"
+
+print_message()
+```
+
+위 코드에서 함수 `print_message()`는 코드의 맨 위에 정의되어 있다.  
+그런데 함수 안에서는 아래쪽에 있는 전역 변수 `message`를 사용한다.
+
+그렇다면 이런 의문이 생긴다.
+
+```text
+Python은 인터프리터라면서?
+위에서 아래로 한 줄씩 실행한다면서?
+그런데 함수는 어떻게 아래에 있는 전역 변수 message에 접근할 수 있는 걸까?
+Python은 파싱도 안 하는 걸까?
+```
+
+결론부터 말하면, Python도 파싱을 한다.  
+다만 함수 안의 코드는 함수가 정의될 때 바로 실행되지 않고, 함수가 호출될 때 실행된다.
+
+---
+
+## 2. Python도 파싱을 한다
+
+Python이 인터프리터 언어라는 말은 코드를 전혀 분석하지 않는다는 뜻이 아니다.
+
+Python은 코드를 실행하기 전에 먼저 다음 과정을 거친다.
+
+```text
+소스 코드
+→ 파싱
+→ 바이트코드로 컴파일
+→ Python 인터프리터가 바이트코드 실행
+```
+
+즉, Python도 실행 전에 문법 구조를 분석한다.
+
+다만 C나 C++처럼 실행 파일을 미리 만들어 두고 실행하는 방식이 아니라, Python 인터프리터가 바이트코드를 실행하는 방식이다.
+
+---
+
+## 3. `def`를 만나면 함수 본문은 바로 실행되지 않는다
+
+다음 코드를 보자.
+
+```python
+def print_message():
+    print(message)
+
+message = "Hello"
+
+print_message()
+```
+
+Python이 위 코드를 실행할 때 `def print_message():`를 만나면 함수 안의 코드를 바로 실행하지 않는다.
+
+즉, 이 부분은 즉시 실행되지 않는다.
+
+```python
+print(message)
+```
+
+대신 Python은 다음 작업을 한다.
+
+```text
+1. print_message라는 함수 객체를 만든다.
+2. 그 함수 객체를 print_message라는 이름에 저장한다.
+3. 함수 본문은 나중에 함수가 호출될 때 실행하기 위해 보관한다.
+```
+
+따라서 `def`는 함수를 “실행”하는 것이 아니라, 함수를 “정의”하는 코드이다.
+
+---
+
+## 4. 실행 순서로 이해하기
+
+다음 코드를 다시 보자.
+
+```python
+def print_message():
+    print(message)
+
+message = "Hello"
+
+print_message()
+```
+
+실행 순서는 다음과 같다.
+
+```text
+1. def print_message(): 를 만난다.
+2. print_message 함수가 정의된다.
+3. 함수 안의 print(message)는 아직 실행되지 않는다.
+4. message = "Hello"가 실행된다.
+5. 전역 변수 message가 만들어진다.
+6. print_message()가 호출된다.
+7. 그제야 함수 안의 print(message)가 실행된다.
+8. 이 시점에는 message가 이미 존재하므로 "Hello"가 출력된다.
+```
+
+실행 결과:
+
+```text
+Hello
+```
+
+핵심은 다음과 같다.
+
+```text
+함수 안의 변수 이름은 함수 정의 시점이 아니라 함수 호출 시점에 찾는다.
+```
+
+---
+
+## 5. 전역 변수는 호출 시점에 존재하면 사용할 수 있다
+
+함수 안에서 전역 변수를 사용할 때 중요한 것은 함수가 어디에 정의되었는지가 아니다.
+
+중요한 것은 함수가 호출되는 시점에 그 전역 변수가 존재하는지이다.
+
+다음 코드는 정상 작동한다.
+
+```python
+def print_message():
+    print(message)
+
+message = "Hello"
+
+print_message()
+```
+
+이유는 `print_message()`가 호출될 때 이미 `message`가 만들어져 있기 때문이다.
+
+```text
+message = "Hello" 실행 완료
+→ print_message() 호출
+→ 함수 안에서 message 찾기
+→ 전역 변수 message 존재
+→ 정상 출력
+```
+
+---
+
+## 6. 호출 전에 전역 변수가 없으면 오류가 난다
+
+반대로 다음 코드는 오류가 난다.
+
+```python
+def print_message():
+    print(message)
+
+print_message()
+
+message = "Hello"
+```
+
+이 코드는 함수 정의 자체는 가능하다.
+
+하지만 문제는 `print_message()`를 너무 일찍 호출했다는 점이다.
+
+실행 순서는 다음과 같다.
+
+```text
+1. print_message 함수가 정의된다.
+2. print_message()가 호출된다.
+3. 함수 안에서 message를 찾는다.
+4. 아직 message = "Hello"가 실행되지 않았다.
+5. 따라서 message라는 이름이 존재하지 않는다.
+6. NameError가 발생한다.
+```
+
+오류 예시:
+
+```text
+NameError: name 'message' is not defined
+```
+
+즉, 아래쪽에 전역 변수가 있더라도 함수 호출 전에 만들어지지 않았다면 사용할 수 없다.
+
+---
+
+## 7. 함수 정의 위치와 변수 접근의 관계
+
+다음 두 코드를 비교해 보자.
+
+### 정상 작동하는 코드
+
+```python
+def print_message():
+    print(message)
+
+message = "Hello"
+
+print_message()
+```
+
+실행 결과:
+
+```text
+Hello
+```
+
+이 코드는 함수 호출 전에 `message`가 만들어져 있으므로 정상 작동한다.
+
+---
+
+### 오류가 나는 코드
+
+```python
+def print_message():
+    print(message)
+
+print_message()
+
+message = "Hello"
+```
+
+실행 결과:
+
+```text
+NameError: name 'message' is not defined
+```
+
+이 코드는 함수 호출 시점에 `message`가 아직 없으므로 오류가 난다.
+
+---
+
+## 8. 함수 안의 코드는 “예약”되어 있다가 나중에 실행된다
+
+`def` 안에 있는 코드는 함수가 정의될 때 실행되는 것이 아니라, 함수가 호출될 때 실행된다.
+
+```python
+def test():
+    print("함수 실행됨")
+
+print("함수 호출 전")
+test()
+print("함수 호출 후")
+```
+
+실행 결과:
+
+```text
+함수 호출 전
+함수 실행됨
+함수 호출 후
+```
+
+`def test():`를 만났을 때 `"함수 실행됨"`이 출력되지 않는다.  
+`test()`를 호출해야 비로소 함수 안의 코드가 실행된다.
+
+---
+
+## 9. Python이 인터프리터 언어라는 말의 정확한 의미
+
+Python이 인터프리터 언어라는 말은 보통 다음 의미로 사용된다.
+
+```text
+컴파일된 실행 파일을 미리 만들어 실행하는 방식이 아니라,
+Python 인터프리터가 코드를 해석하고 실행한다.
+```
+
+하지만 이것이 다음 뜻은 아니다.
+
+```text
+Python은 파싱을 전혀 하지 않는다.
+Python은 아래쪽 코드를 전혀 모른다.
+Python은 함수 본문을 정의 시점에 바로 실행한다.
+```
+
+Python은 실행 전에 소스 코드를 분석하고, 바이트코드로 컴파일한 뒤 실행한다.
+
+즉, Python도 내부적으로는 다음 과정을 거친다.
+
+```text
+작성한 .py 코드
+→ 문법 분석
+→ 바이트코드 생성
+→ 인터프리터 실행
+```
+
+그래서 Python은 인터프리터 언어이면서도 파싱과 컴파일 과정을 가진다.
+
+---
+
+## 10. 변수 이름은 언제 찾을까?
+
+함수 안에서 전역 변수 이름을 찾는 시점은 함수 정의 시점이 아니라 함수 실행 시점이다.
+
+예를 들어:
+
+```python
+def show():
+    print(x)
+
+x = 10
+show()
+```
+
+실행 결과:
+
+```text
+10
+```
+
+이 코드에서 `x`는 함수보다 아래에 있지만, `show()`가 호출될 때는 이미 `x = 10`이 실행된 상태이다.
+
+따라서 함수 안에서 `x`를 찾을 수 있다.
+
+---
+
+## 11. 함수 정의 시점에는 이름 존재 여부를 엄격히 검사하지 않는다
+
+다음 코드는 함수 정의 자체는 가능하다.
+
+```python
+def show():
+    print(x)
+```
+
+이 시점에 `x`가 없어도 함수 정의는 된다.
+
+하지만 함수를 호출하면 문제가 될 수 있다.
+
+```python
+show()
+```
+
+만약 호출 시점에도 `x`가 없으면 오류가 난다.
+
+```text
+NameError: name 'x' is not defined
+```
+
+즉, Python은 함수 안의 전역 변수 이름을 함수 정의 순간에 바로 값으로 확정하지 않는다.  
+대부분의 이름 조회는 실행 시점에 이루어진다.
+
+---
+
+## 12. 정리 예제
+
+```python
+def print_message():
+    print(message)
+
+message = "Hello"
+
+print_message()
+```
+
+이 코드는 다음과 같이 이해하면 된다.
+
+```text
+def print_message():
+→ print_message라는 함수를 등록한다.
+→ 함수 안의 print(message)는 아직 실행하지 않는다.
+
+message = "Hello"
+→ 전역 변수 message를 만든다.
+
+print_message()
+→ 함수를 실행한다.
+→ 함수 안에서 message를 찾는다.
+→ 전역 변수 message가 있으므로 "Hello" 출력
+```
+
+---
+
+## 13. 잘못 이해하기 쉬운 부분
+
+### 오해 1. Python은 인터프리터라서 파싱을 안 한다
+
+틀린 이해이다.
+
+Python도 코드를 실행하기 전에 문법을 분석한다.
+
+```text
+Python도 파싱한다.
+Python도 바이트코드로 컴파일한다.
+그 바이트코드를 인터프리터가 실행한다.
+```
+
+---
+
+### 오해 2. 함수는 정의될 때 내부 코드가 바로 실행된다
+
+틀린 이해이다.
+
+```python
+def hello():
+    print("Hello")
+```
+
+위 코드만으로는 `"Hello"`가 출력되지 않는다.
+
+다음처럼 호출해야 실행된다.
+
+```python
+hello()
+```
+
+---
+
+### 오해 3. 함수보다 아래에 있는 전역 변수는 절대 사용할 수 없다
+
+틀린 이해이다.
+
+함수보다 아래에 전역 변수가 있더라도, 함수 호출 전에 그 변수가 만들어졌다면 사용할 수 있다.
+
+```python
+def show():
+    print(x)
+
+x = 10
+show()
+```
+
+실행 결과:
+
+```text
+10
+```
+
+---
+
+## 14. 핵심 정리
+
+Python은 인터프리터 언어이지만, 코드를 전혀 분석하지 않는 것은 아니다.  
+Python도 실행 전에 코드를 파싱하고 바이트코드로 컴파일한다.
+
+`def`를 만나면 함수 객체가 만들어지고, 함수 이름에 저장된다.  
+하지만 함수 본문은 그 자리에서 바로 실행되지 않는다.
+
+함수 안의 코드는 함수가 호출될 때 실행된다.
+
+따라서 다음 코드는 정상 작동한다.
+
+```python
+def print_message():
+    print(message)
+
+message = "Hello"
+
+print_message()
+```
+
+이유는 다음과 같다.
+
+```text
+함수 정의 시점에는 print(message)가 실행되지 않는다.
+message = "Hello"가 먼저 실행된다.
+그 후 print_message()가 호출된다.
+호출 시점에는 message가 이미 존재한다.
+따라서 함수 안에서 전역 변수 message에 접근할 수 있다.
+```
+
+반대로 다음 코드는 오류가 난다.
+
+```python
+def print_message():
+    print(message)
+
+print_message()
+
+message = "Hello"
+```
+
+이유는 함수 호출 시점에 `message`가 아직 만들어지지 않았기 때문이다.
+
+가장 중요한 결론은 다음과 같다.
+
+```text
+Python은 인터프리터 언어이지만 파싱을 한다.
+def는 함수를 등록할 뿐, 함수 본문을 바로 실행하지 않는다.
+전역 변수는 함수 호출 시점에 존재하면 접근할 수 있다.
+```
