@@ -3104,3 +3104,406 @@ a, b → 매개변수
 ```
 
 즉, 함수는 매개변수라는 자리를 만들어 두고, 호출할 때 인수라는 실제 값을 넣어 실행된다.
+
+# Python 함수 호출과 `print(함수())` 출력 결과 정리
+
+## 1. 예제 함수
+
+다음과 같은 함수가 있다고 하자.
+
+```python
+def message_print():
+    print("--------------------")
+    print("|                  |")
+    print("|  You can do it!  |")
+    print("|                  |")
+    print("++++++++++++++++++++")
+```
+
+이 함수는 문자열을 반환하는 함수가 아니라, 함수 내부에서 직접 출력하는 함수이다.
+
+즉, 함수 안에 이미 여러 개의 `print()`가 들어 있다.
+
+---
+
+## 2. 그냥 함수만 호출하는 경우
+
+```python
+message_print()
+```
+
+실행 결과:
+
+```text
+--------------------
+|                  |
+|  You can do it!  |
+|                  |
+++++++++++++++++++++
+```
+
+이 경우 함수 안에 있는 `print()`들이 실행되어 메시지 박스가 출력된다.
+
+이 함수의 정상적인 사용 방식은 보통 다음과 같다.
+
+```python
+message_print()
+```
+
+---
+
+## 3. `print(message_print())`로 출력하는 경우
+
+이번에는 함수를 다시 `print()` 안에 넣어 보자.
+
+```python
+print(message_print())
+```
+
+실행 결과:
+
+```text
+--------------------
+|                  |
+|  You can do it!  |
+|                  |
+++++++++++++++++++++
+None
+```
+
+마지막에 `None`이 출력된다.
+
+---
+
+## 4. 왜 `None`이 출력될까?
+
+`print(message_print())`의 실행 순서는 다음과 같다.
+
+```text
+1. 먼저 message_print() 함수가 실행된다.
+2. 함수 안의 print()들이 실행되어 메시지 박스가 출력된다.
+3. message_print() 함수가 끝난다.
+4. 그런데 message_print()에는 return 값이 없다.
+5. Python에서 return 값이 없는 함수는 자동으로 None을 반환한다.
+6. 바깥쪽 print()가 그 None을 출력한다.
+```
+
+즉, `message_print()`는 실제로 다음과 비슷하게 동작한다.
+
+```python
+def message_print():
+    print("--------------------")
+    print("|                  |")
+    print("|  You can do it!  |")
+    print("|                  |")
+    print("++++++++++++++++++++")
+    return None
+```
+
+`return None`을 직접 쓰지 않아도, Python은 반환값이 없는 함수에 대해 자동으로 `None`을 반환한다.
+
+---
+
+## 5. 함수 내부의 `print()`와 함수의 반환값은 다르다
+
+다음 두 개념은 다르다.
+
+```text
+출력
+→ 화면에 보여 주는 것
+
+반환
+→ 함수가 호출된 자리로 값을 돌려주는 것
+```
+
+예를 들어:
+
+```python
+def message_print():
+    print("Hello")
+```
+
+이 함수는 `"Hello"`를 화면에 출력하지만, 값을 반환하지는 않는다.
+
+따라서:
+
+```python
+result = message_print()
+print(result)
+```
+
+실행 결과:
+
+```text
+Hello
+None
+```
+
+`message_print()`가 `"Hello"`를 출력한 뒤, 반환값이 없기 때문에 `result`에는 `None`이 들어간다.
+
+---
+
+## 6. `print(message_print())`가 이상하게 보이는 이유
+
+다음 코드를 보자.
+
+```python
+print(message_print())
+```
+
+이 코드는 겉으로는 `message_print()`의 출력 결과를 다시 출력하는 것처럼 보인다.
+
+하지만 실제 의미는 다르다.
+
+```text
+message_print()를 실행한 뒤,
+그 함수의 반환값을 print()로 출력한다.
+```
+
+그런데 `message_print()`는 반환값이 없으므로 반환값은 `None`이다.
+
+그래서 마지막에 `None`이 출력된다.
+
+---
+
+## 7. 괄호가 있는 경우와 없는 경우
+
+함수를 사용할 때 괄호 `()`가 있느냐 없느냐도 중요하다.
+
+---
+
+## 7.1 `message_print()`
+
+```python
+message_print()
+```
+
+의미:
+
+```text
+message_print 함수를 실행한다.
+```
+
+출력:
+
+```text
+--------------------
+|                  |
+|  You can do it!  |
+|                  |
+++++++++++++++++++++
+```
+
+---
+
+## 7.2 `print(message_print())`
+
+```python
+print(message_print())
+```
+
+의미:
+
+```text
+message_print 함수를 실행한 뒤,
+그 함수의 반환값을 출력한다.
+```
+
+출력:
+
+```text
+--------------------
+|                  |
+|  You can do it!  |
+|                  |
+++++++++++++++++++++
+None
+```
+
+---
+
+## 7.3 `print(message_print)`
+
+```python
+print(message_print)
+```
+
+의미:
+
+```text
+함수를 실행하지 않고, 함수 객체 자체를 출력한다.
+```
+
+출력 예시:
+
+```text
+<function message_print at 0x000001A2B3C4D5E0>
+```
+
+이 결과는 함수가 메모리 어딘가에 존재한다는 정보를 보여 주는 것이다.
+
+함수 안의 내용은 실행되지 않는다.
+
+---
+
+## 8. 세 가지 코드 비교
+
+| 코드 | 의미 | 결과 |
+|---|---|---|
+| `message_print()` | 함수 실행 | 메시지 박스 출력 |
+| `print(message_print())` | 함수 실행 후 반환값 출력 | 메시지 박스 출력 후 `None` 출력 |
+| `print(message_print)` | 함수 자체 출력 | 함수 객체 정보 출력 |
+
+---
+
+## 9. 반환값이 있는 함수와 비교
+
+이번에는 `print()`가 아니라 `return`을 사용하는 함수를 보자.
+
+```python
+def message_return():
+    return "You can do it!"
+```
+
+이 함수는 화면에 직접 출력하지 않고 문자열을 반환한다.
+
+```python
+print(message_return())
+```
+
+실행 결과:
+
+```text
+You can do it!
+```
+
+이 경우에는 `message_return()`이 `"You can do it!"`이라는 값을 반환하므로, 바깥쪽 `print()`가 그 값을 출력한다.
+
+---
+
+## 10. 출력용 함수와 반환용 함수의 차이
+
+### 출력용 함수
+
+```python
+def message_print():
+    print("You can do it!")
+```
+
+사용:
+
+```python
+message_print()
+```
+
+결과:
+
+```text
+You can do it!
+```
+
+이 함수는 이미 내부에서 출력하므로 `print(message_print())`로 감쌀 필요가 없다.
+
+---
+
+### 반환용 함수
+
+```python
+def message_return():
+    return "You can do it!"
+```
+
+사용:
+
+```python
+print(message_return())
+```
+
+결과:
+
+```text
+You can do it!
+```
+
+이 함수는 값을 반환만 하므로, 화면에 보이게 하려면 `print()`로 출력해야 한다.
+
+---
+
+## 11. 예제 함수는 어떻게 사용하는 것이 맞을까?
+
+처음 예제 함수는 내부에서 이미 `print()`를 사용하고 있다.
+
+```python
+def message_print():
+    print("--------------------")
+    print("|                  |")
+    print("|  You can do it!  |")
+    print("|                  |")
+    print("++++++++++++++++++++")
+```
+
+따라서 올바른 사용은 다음과 같다.
+
+```python
+message_print()
+```
+
+굳이 이렇게 쓰지 않는다.
+
+```python
+print(message_print())
+```
+
+왜냐하면 이 경우 마지막에 `None`이 추가로 출력되기 때문이다.
+
+---
+
+## 12. 핵심 정리
+
+함수 안에 이미 `print()`가 들어 있다면, 그 함수는 보통 그냥 호출하면 된다.
+
+```python
+message_print()
+```
+
+만약 다음처럼 쓰면:
+
+```python
+print(message_print())
+```
+
+함수 내부의 출력이 먼저 실행되고, 함수의 반환값이 다시 출력된다.
+
+그런데 반환값이 없는 함수는 자동으로 `None`을 반환한다.
+
+그래서 결과는 다음과 같이 된다.
+
+```text
+--------------------
+|                  |
+|  You can do it!  |
+|                  |
+++++++++++++++++++++
+None
+```
+
+정리하면 다음과 같다.
+
+```text
+message_print()
+→ 함수 실행, 내부 print() 출력
+
+print(message_print())
+→ 함수 실행, 내부 print() 출력
+→ 함수 반환값 None을 다시 출력
+
+print(message_print)
+→ 함수 실행 X
+→ 함수 객체 정보 출력
+```
+
+가장 중요한 결론은 다음과 같다.
+
+```text
+함수 안에 print()가 이미 있다면 print(함수())로 감싸지 말고 그냥 함수()로 호출한다.
+```
