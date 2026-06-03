@@ -3998,3 +3998,716 @@ Python은 인터프리터 언어이지만 파싱을 한다.
 def는 함수를 등록할 뿐, 함수 본문을 바로 실행하지 않는다.
 전역 변수는 함수 호출 시점에 존재하면 접근할 수 있다.
 ```
+
+# OOP(Object Oriented Programming)
+
+## 3. 클래스와 객체
+
+OOP에서 가장 중요한 개념은 **클래스(Class)**와 **객체(Object)**입니다.
+
+### 3-1. 클래스란?
+
+**클래스**는 객체를 만들기 위한 설계도입니다.
+
+예를 들어 자동차를 만들기 전에 설계도가 필요하듯이, 객체를 만들기 위해서는 클래스가 필요합니다.
+
+```python
+class Car:
+    pass
+```
+
+위 코드는 `Car`라는 클래스를 정의한 것입니다.
+
+아직 구체적인 기능은 없지만, 자동차 객체를 만들 수 있는 기본 틀입니다.
+
+---
+
+### 3-2. 객체란?
+
+**객체**는 클래스를 바탕으로 실제로 만들어진 대상입니다.
+
+```python
+class Car:
+    pass
+
+
+car1 = Car()
+car2 = Car()
+```
+
+여기서 `Car`는 클래스이고, `car1`, `car2`는 객체입니다.
+
+즉, 하나의 클래스로 여러 개의 객체를 만들 수 있습니다.
+
+| 클래스 | 객체 |
+|---|---|
+| 설계도 | 실제 만들어진 것 |
+| 자동차 설계도 | 실제 자동차 |
+| 붕어빵 틀 | 붕어빵 |
+| 회원 설계도 | 실제 회원 데이터 |
+
+---
+
+## 4. 속성(Attribute)
+
+**속성**은 객체가 가지고 있는 데이터입니다.
+
+예를 들어 자동차 객체는 다음과 같은 속성을 가질 수 있습니다.
+
+- 색상
+- 브랜드
+- 속도
+
+```python
+class Car:
+    def __init__(self, brand, color):
+        self.brand = brand
+        self.color = color
+
+
+car1 = Car("Hyundai", "Black")
+car2 = Car("Kia", "White")
+
+print(car1.brand)
+print(car2.color)
+```
+
+실행 결과:
+
+```text
+Hyundai
+White
+```
+
+여기서 `brand`, `color`가 객체의 속성입니다.
+
+---
+
+## 5. 메서드(Method)
+
+**메서드**는 클래스 안에 정의된 함수입니다.
+
+객체가 수행할 수 있는 동작을 표현합니다.
+
+```python
+class Car:
+    def __init__(self, brand, color):
+        self.brand = brand
+        self.color = color
+        self.speed = 0
+
+    def drive(self):
+        print(f"{self.brand} 자동차가 달립니다.")
+
+    def stop(self):
+        print(f"{self.brand} 자동차가 멈춥니다.")
+
+
+car = Car("Hyundai", "Black")
+
+car.drive()
+car.stop()
+```
+
+실행 결과:
+
+```text
+Hyundai 자동차가 달립니다.
+Hyundai 자동차가 멈춥니다.
+```
+
+여기서 `drive()`와 `stop()`은 메서드입니다.
+
+---
+
+## 6. 생성자 `__init__`
+
+`__init__`은 객체가 생성될 때 자동으로 실행되는 특별한 메서드입니다.
+
+주로 객체의 초기값을 설정할 때 사용합니다.
+
+```python
+class Student:
+    def __init__(self, name, grade):
+        self.name = name
+        self.grade = grade
+
+
+student1 = Student("민수", 3)
+
+print(student1.name)
+print(student1.grade)
+```
+
+실행 결과:
+
+```text
+민수
+3
+```
+
+`Student("민수", 3)`으로 객체를 만들면 `__init__`이 자동으로 호출됩니다.
+
+---
+
+## 7. `self`란?
+
+`self`는 객체 자기 자신을 의미합니다.
+
+클래스 안에서 객체의 속성이나 메서드에 접근할 때 사용합니다.
+
+```python
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def introduce(self):
+        print(f"안녕하세요. 저는 {self.name}입니다.")
+
+
+person = Person("지은")
+person.introduce()
+```
+
+실행 결과:
+
+```text
+안녕하세요. 저는 지은입니다.
+```
+
+여기서 `self.name`은 현재 객체가 가진 `name` 값을 의미합니다.
+
+---
+
+## 8. OOP의 4대 특징
+
+객체 지향 프로그래밍에는 대표적인 4가지 특징이 있습니다.
+
+1. 캡슐화
+2. 상속
+3. 다형성
+4. 추상화
+
+---
+
+### 8-1. 캡슐화 Encapsulation
+
+**캡슐화**는 데이터와 기능을 하나의 클래스 안에 묶는 것을 말합니다.
+
+또한 외부에서 객체 내부의 데이터를 함부로 변경하지 못하도록 보호하는 의미도 있습니다.
+
+```python
+class BankAccount:
+    def __init__(self, owner, balance):
+        self.owner = owner
+        self.__balance = balance
+
+    def deposit(self, money):
+        self.__balance += money
+
+    def withdraw(self, money):
+        if self.__balance >= money:
+            self.__balance -= money
+        else:
+            print("잔액이 부족합니다.")
+
+    def get_balance(self):
+        return self.__balance
+
+
+account = BankAccount("민수", 10000)
+
+account.deposit(5000)
+account.withdraw(3000)
+
+print(account.get_balance())
+```
+
+실행 결과:
+
+```text
+12000
+```
+
+여기서 `__balance`는 외부에서 직접 접근하기 어렵게 만든 속성입니다.
+
+즉, 잔액은 `deposit()`, `withdraw()`, `get_balance()` 같은 정해진 메서드를 통해서만 다루도록 만든 것입니다.
+
+이처럼 중요한 데이터를 보호하고, 정해진 방식으로만 사용하게 하는 것이 캡슐화입니다.
+
+---
+
+### 8-2. 상속 Inheritance
+
+**상속**은 기존 클래스의 속성과 기능을 새로운 클래스가 물려받는 것입니다.
+
+기존 클래스를 **부모 클래스**, 상속받는 클래스를 **자식 클래스**라고 합니다.
+
+```python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def eat(self):
+        print(f"{self.name}가 먹이를 먹습니다.")
+
+
+class Dog(Animal):
+    def bark(self):
+        print(f"{self.name}가 멍멍 짖습니다.")
+
+
+dog = Dog("초코")
+
+dog.eat()
+dog.bark()
+```
+
+실행 결과:
+
+```text
+초코가 먹이를 먹습니다.
+초코가 멍멍 짖습니다.
+```
+
+`Dog` 클래스에는 `eat()` 메서드가 직접 정의되어 있지 않습니다.
+
+하지만 `Animal` 클래스를 상속받았기 때문에 `eat()`을 사용할 수 있습니다.
+
+상속을 사용하면 중복 코드를 줄이고, 기존 코드를 재사용할 수 있습니다.
+
+---
+
+### 8-3. 오버라이딩 Overriding
+
+상속받은 메서드를 자식 클래스에서 다시 정의하는 것을 **오버라이딩**이라고 합니다.
+
+```python
+class Animal:
+    def speak(self):
+        print("동물이 소리를 냅니다.")
+
+
+class Dog(Animal):
+    def speak(self):
+        print("강아지가 멍멍 짖습니다.")
+
+
+class Cat(Animal):
+    def speak(self):
+        print("고양이가 야옹 웁니다.")
+
+
+dog = Dog()
+cat = Cat()
+
+dog.speak()
+cat.speak()
+```
+
+실행 결과:
+
+```text
+강아지가 멍멍 짖습니다.
+고양이가 야옹 웁니다.
+```
+
+부모 클래스의 `speak()` 메서드를 자식 클래스에서 각각 다르게 다시 정의했습니다.
+
+---
+
+### 8-4. 다형성 Polymorphism
+
+**다형성**은 같은 이름의 메서드가 객체에 따라 다르게 동작하는 것을 말합니다.
+
+```python
+class Dog:
+    def speak(self):
+        print("멍멍")
+
+
+class Cat:
+    def speak(self):
+        print("야옹")
+
+
+class Duck:
+    def speak(self):
+        print("꽥꽥")
+
+
+animals = [Dog(), Cat(), Duck()]
+
+for animal in animals:
+    animal.speak()
+```
+
+실행 결과:
+
+```text
+멍멍
+야옹
+꽥꽥
+```
+
+모두 `speak()`라는 같은 메서드를 호출했지만, 객체의 종류에 따라 다른 결과가 나왔습니다.
+
+이것이 다형성입니다.
+
+---
+
+### 8-5. 추상화 Abstraction
+
+**추상화**는 복잡한 내부 구현은 숨기고, 필요한 기능만 외부에 보여주는 것입니다.
+
+예를 들어 자동차를 운전할 때 운전자는 엔진이 내부적으로 어떻게 동작하는지 몰라도 됩니다.
+
+운전자는 다음 기능만 알면 됩니다.
+
+- 시동 걸기
+- 가속하기
+- 브레이크 밟기
+- 핸들 돌리기
+
+프로그래밍에서도 마찬가지입니다.
+
+사용자는 내부 코드가 어떻게 구현되어 있는지 몰라도, 정해진 메서드를 사용하면 됩니다.
+
+```python
+class RemoteControl:
+    def turn_on(self):
+        print("TV를 켭니다.")
+
+    def turn_off(self):
+        print("TV를 끕니다.")
+
+    def change_channel(self, channel):
+        print(f"{channel}번 채널로 변경합니다.")
+
+
+remote = RemoteControl()
+
+remote.turn_on()
+remote.change_channel(7)
+remote.turn_off()
+```
+
+실행 결과:
+
+```text
+TV를 켭니다.
+7번 채널로 변경합니다.
+TV를 끕니다.
+```
+
+사용자는 리모컨 내부 회로가 어떻게 동작하는지 알 필요 없이 메서드만 사용하면 됩니다.
+
+이것이 추상화의 핵심입니다.
+
+---
+
+## 9. OOP 예제: 학생 관리 프로그램
+
+아래는 OOP를 활용한 간단한 학생 관리 예제입니다.
+
+```python
+class Student:
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+
+    def show_info(self):
+        print(f"이름: {self.name}, 점수: {self.score}")
+
+    def is_passed(self):
+        return self.score >= 60
+
+
+student1 = Student("민수", 85)
+student2 = Student("지은", 45)
+
+student1.show_info()
+student2.show_info()
+
+print(student1.is_passed())
+print(student2.is_passed())
+```
+
+실행 결과:
+
+```text
+이름: 민수, 점수: 85
+이름: 지은, 점수: 45
+True
+False
+```
+
+이 예제에서 `Student` 클래스는 학생이라는 객체를 표현합니다.
+
+| 구성 요소 | 설명 |
+|---|---|
+| `name` | 학생 이름 |
+| `score` | 학생 점수 |
+| `show_info()` | 학생 정보 출력 |
+| `is_passed()` | 합격 여부 확인 |
+
+---
+
+## 10. OOP 예제: 상속을 활용한 회원 시스템
+
+```python
+class User:
+    def __init__(self, username, email):
+        self.username = username
+        self.email = email
+
+    def login(self):
+        print(f"{self.username}님이 로그인했습니다.")
+
+    def show_info(self):
+        print(f"아이디: {self.username}")
+        print(f"이메일: {self.email}")
+
+
+class AdminUser(User):
+    def delete_user(self, target_username):
+        print(f"{target_username} 사용자를 삭제했습니다.")
+
+
+class CustomerUser(User):
+    def buy_product(self, product_name):
+        print(f"{self.username}님이 {product_name} 상품을 구매했습니다.")
+
+
+admin = AdminUser("admin", "admin@example.com")
+customer = CustomerUser("user01", "user01@example.com")
+
+admin.login()
+admin.show_info()
+admin.delete_user("bad_user")
+
+customer.login()
+customer.show_info()
+customer.buy_product("노트북")
+```
+
+실행 결과:
+
+```text
+admin님이 로그인했습니다.
+아이디: admin
+이메일: admin@example.com
+bad_user 사용자를 삭제했습니다.
+user01님이 로그인했습니다.
+아이디: user01
+이메일: user01@example.com
+user01님이 노트북 상품을 구매했습니다.
+```
+
+이 예제에서 `AdminUser`와 `CustomerUser`는 공통적으로 `User` 클래스를 상속받습니다.
+
+따라서 로그인 기능과 정보 출력 기능을 중복해서 작성하지 않아도 됩니다.
+
+---
+
+## 11. OOP를 사용하는 이유
+
+OOP를 사용하는 이유는 다음과 같습니다.
+
+### 11-1. 코드 재사용성이 높아진다
+
+상속을 사용하면 이미 만들어진 클래스를 다시 활용할 수 있습니다.
+
+```python
+class Animal:
+    def eat(self):
+        print("먹이를 먹습니다.")
+
+
+class Dog(Animal):
+    pass
+
+
+dog = Dog()
+dog.eat()
+```
+
+`Dog` 클래스에 `eat()`을 다시 작성하지 않아도 사용할 수 있습니다.
+
+---
+
+### 11-2. 유지보수가 쉬워진다
+
+관련 데이터와 기능이 클래스 안에 함께 들어 있기 때문에 코드를 관리하기 쉽습니다.
+
+예를 들어 회원 관련 기능은 `User` 클래스에, 상품 관련 기능은 `Product` 클래스에 모아둘 수 있습니다.
+
+---
+
+### 11-3. 코드 구조가 현실 세계와 비슷해진다
+
+현실 세계의 개념을 객체로 표현하기 때문에 프로그램 구조를 이해하기 쉬워집니다.
+
+예를 들어 쇼핑몰 프로그램은 다음과 같은 객체들로 구성할 수 있습니다.
+
+- User
+- Product
+- Order
+- Payment
+- Cart
+
+---
+
+### 11-4. 확장성이 좋아진다
+
+기존 코드를 크게 수정하지 않고 새로운 기능을 추가하기 좋습니다.
+
+예를 들어 `User` 클래스를 기반으로 다음과 같이 여러 종류의 사용자를 만들 수 있습니다.
+
+- AdminUser
+- CustomerUser
+- SellerUser
+
+---
+
+## 12. 절차 지향 프로그래밍과 객체 지향 프로그래밍 비교
+
+### 12-1. 절차 지향 프로그래밍
+
+절차 지향 프로그래밍은 프로그램을 순서대로 실행되는 절차 중심으로 작성합니다.
+
+```python
+name = "민수"
+score = 85
+
+print(f"이름: {name}")
+print(f"점수: {score}")
+
+if score >= 60:
+    print("합격")
+else:
+    print("불합격")
+```
+
+간단한 프로그램에서는 이해하기 쉽지만, 코드가 커지면 데이터와 기능이 흩어져 관리가 어려워질 수 있습니다.
+
+---
+
+### 12-2. 객체 지향 프로그래밍
+
+객체 지향 프로그래밍은 데이터와 기능을 객체 안에 묶어서 관리합니다.
+
+```python
+class Student:
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+
+    def show_result(self):
+        print(f"이름: {self.name}")
+        print(f"점수: {self.score}")
+
+        if self.score >= 60:
+            print("합격")
+        else:
+            print("불합격")
+
+
+student = Student("민수", 85)
+student.show_result()
+```
+
+객체 지향 방식은 코드가 길어 보일 수 있지만, 프로그램이 커질수록 구조적으로 관리하기 쉽습니다.
+
+---
+
+## 13. OOP 핵심 용어 정리
+
+| 용어 | 의미 |
+|---|---|
+| 클래스 | 객체를 만들기 위한 설계도 |
+| 객체 | 클래스로부터 만들어진 실제 대상 |
+| 인스턴스 | 객체와 거의 같은 의미로 사용됨 |
+| 속성 | 객체가 가진 데이터 |
+| 메서드 | 객체가 수행하는 기능 |
+| 생성자 | 객체 생성 시 자동 실행되는 메서드 |
+| 캡슐화 | 데이터와 기능을 하나로 묶고 보호하는 것 |
+| 상속 | 부모 클래스의 기능을 자식 클래스가 물려받는 것 |
+| 오버라이딩 | 부모의 메서드를 자식 클래스에서 다시 정의하는 것 |
+| 다형성 | 같은 메서드가 객체에 따라 다르게 동작하는 것 |
+| 추상화 | 복잡한 내부 구현은 숨기고 필요한 기능만 보여주는 것 |
+
+---
+
+## 14. OOP 전체 흐름 예제
+
+아래 예제는 클래스, 객체, 상속, 오버라이딩, 다형성을 한 번에 보여줍니다.
+
+```python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        print("동물이 소리를 냅니다.")
+
+
+class Dog(Animal):
+    def speak(self):
+        print(f"{self.name}가 멍멍 짖습니다.")
+
+
+class Cat(Animal):
+    def speak(self):
+        print(f"{self.name}가 야옹 웁니다.")
+
+
+class Cow(Animal):
+    def speak(self):
+        print(f"{self.name}가 음메 웁니다.")
+
+
+animals = [
+    Dog("초코"),
+    Cat("나비"),
+    Cow("얼룩이")
+]
+
+for animal in animals:
+    animal.speak()
+```
+
+실행 결과:
+
+```text
+초코가 멍멍 짖습니다.
+나비가 야옹 웁니다.
+얼룩이가 음메 웁니다.
+```
+
+이 예제에서 확인할 수 있는 OOP 개념은 다음과 같습니다.
+
+| 개념 | 코드에서의 예 |
+|---|---|
+| 클래스 | `Animal`, `Dog`, `Cat`, `Cow` |
+| 객체 | `Dog("초코")`, `Cat("나비")`, `Cow("얼룩이")` |
+| 상속 | `class Dog(Animal)` |
+| 오버라이딩 | 각 클래스의 `speak()` |
+| 다형성 | `animal.speak()` 호출 시 객체마다 다른 동작 |
+
+---
+
+## 15. 정리
+
+OOP는 프로그램을 객체 중심으로 설계하는 방식입니다.
+
+객체는 속성과 기능을 함께 가지고 있으며, 클래스는 객체를 만들기 위한 설계도입니다.
+
+OOP의 핵심 특징은 다음 네 가지입니다.
+
+1. **캡슐화**: 데이터와 기능을 하나로 묶고 보호한다.
+2. **상속**: 기존 클래스의 기능을 새로운 클래스가 물려받는다.
+3. **다형성**: 같은 메서드가 객체에 따라 다르게 동작한다.
+4. **추상화**: 복잡한 내부 구현은 숨기고 필요한 기능만 보여준다.
+
+객체 지향 프로그래밍은 처음에는 조금 어렵게 느껴질 수 있지만, 프로그램이 커질수록 코드를 체계적으로 관리하고 확장하기 쉽게 만들어 줍니다.
