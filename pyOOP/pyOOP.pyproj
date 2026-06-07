@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f66d5ca4-44a2-44fb-85f4-4119070cf40e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>numPy\numpy_ultimate.py</StartupFile>
+    <StartupFile>encapsulation\encapsulation.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,6 +22,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="class_magic.py" />
+    <Compile Include="encapsulation\encapsulation.py" />
     <Compile Include="fibo.py" />
     <Compile Include="inheritance\inherit.py" />
     <Compile Include="list_value.py" />
