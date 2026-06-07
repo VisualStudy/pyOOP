@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f66d5ca4-44a2-44fb-85f4-4119070cf40e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>numPy\numpy_boolean_indexing_even.py</StartupFile>
+    <StartupFile>numPy\numpy_reshape.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -36,6 +36,7 @@
     <Compile Include="numPy\numpy_boolean_indexing_even.py" />
     <Compile Include="numPy\numpy_dimension.py" />
     <Compile Include="numPy\numpy_indexing_slicing.py" />
+    <Compile Include="numPy\numpy_reshape.py" />
     <Compile Include="numPy\numpy_slicing.py" />
     <Compile Include="numPy\numpy_two_dimension.py" />
     <Compile Include="numPy\numPy_vs_list.py" />
