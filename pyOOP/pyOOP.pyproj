@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f66d5ca4-44a2-44fb-85f4-4119070cf40e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>numPy\numpy_slicing.py</StartupFile>
+    <StartupFile>numPy\numpy_boolean_indexing.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -32,6 +32,7 @@
     <Compile Include="callpkg\module_area.py" />
     <Compile Include="callpkg\operation.py" />
     <Compile Include="numPy\numPy.py" />
+    <Compile Include="numPy\numpy_boolean_indexing.py" />
     <Compile Include="numPy\numpy_dimension.py" />
     <Compile Include="numPy\numpy_indexing_slicing.py" />
     <Compile Include="numPy\numpy_slicing.py" />
