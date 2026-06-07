@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f66d5ca4-44a2-44fb-85f4-4119070cf40e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>encapsulation\encapsulation.py</StartupFile>
+    <StartupFile>inheritance\inheritance_super.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -25,6 +25,8 @@
     <Compile Include="encapsulation\encapsulation.py" />
     <Compile Include="fibo.py" />
     <Compile Include="inheritance\inherit.py" />
+    <Compile Include="inheritance\inheritance.py" />
+    <Compile Include="inheritance\inheritance_super.py" />
     <Compile Include="list_value.py" />
     <Compile Include="magic_method.py" />
     <Compile Include="main_fibo.py" />
