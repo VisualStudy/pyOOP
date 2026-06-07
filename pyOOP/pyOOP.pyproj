@@ -23,7 +23,7 @@
   <ItemGroup>
     <Compile Include="class_magic.py" />
     <Compile Include="fibo.py" />
-    <Compile Include="inherit.py" />
+    <Compile Include="inheritance\inherit.py" />
     <Compile Include="list_value.py" />
     <Compile Include="magic_method.py" />
     <Compile Include="main_fibo.py" />
@@ -57,6 +57,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="callpkg\" />
+    <Folder Include="encapsulation\" />
+    <Folder Include="inheritance\" />
     <Folder Include="numPy\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
