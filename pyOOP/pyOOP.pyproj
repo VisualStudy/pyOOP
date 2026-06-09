@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f66d5ca4-44a2-44fb-85f4-4119070cf40e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>inheritance\inheritance_super.py</StartupFile>
+    <StartupFile>tuple.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -55,6 +55,7 @@
     <Compile Include="tkinter_menu_creat.py" />
     <Compile Include="tk_class.py" />
     <Compile Include="tk_gui.py" />
+    <Compile Include="tuple.py" />
     <Compile Include="two_dimension_list.py" />
     <Compile Include="variable.py" />
   </ItemGroup>
