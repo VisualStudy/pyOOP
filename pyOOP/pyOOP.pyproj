@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f66d5ca4-44a2-44fb-85f4-4119070cf40e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>pygame\color_catcher.py</StartupFile>
+    <StartupFile>pygame\color_catcher\color_catcher_2.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,7 +22,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="class_magic.py" />
-    <Compile Include="pygame\color_catcher.py" />
+    <Compile Include="pygame\color_catcher\color_catcher.py" />
     <Compile Include="encapsulation\encapsulation.py" />
     <Compile Include="fibo.py" />
     <Compile Include="inheritance\inherit.py" />
@@ -49,6 +49,7 @@
     <Compile Include="numPy\numPy_vs_list.py" />
     <Compile Include="print_parameter_end.py" />
     <Compile Include="private_class.py" />
+    <Compile Include="pygame\color_catcher\color_catcher_2.py" />
     <Compile Include="pyOOP.py" />
     <Compile Include="recursive_factorial.py" />
     <Compile Include="square.py" />
@@ -66,6 +67,7 @@
     <Folder Include="inheritance\" />
     <Folder Include="pygame\" />
     <Folder Include="numPy\" />
+    <Folder Include="pygame\color_catcher\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
