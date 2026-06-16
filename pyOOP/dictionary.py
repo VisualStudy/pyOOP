@@ -9,3 +9,9 @@ print(MyList1)
 # MyList2 = MyList + 1
 MyList2 = MyList + [1]
 print(MyList2)
+
+MyArray1 = MyArray * 10
+print(MyArray1)
+
+MyArray2 = MyArray + 5
+print(MyArray2)
