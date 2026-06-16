@@ -22,6 +22,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="class_magic.py" />
+    <Compile Include="dictionary.py" />
     <Compile Include="pygame\aden_fight\aden_precision_game\aden_precision_game\main.py" />
     <Compile Include="pygame\aden_fight\aden_precision_game_v2\main.py" />
     <Compile Include="pygame\aden_fight\aden_precision_game_v3\main.py" />
