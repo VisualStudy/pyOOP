@@ -24,3 +24,9 @@ print(MyArray1)
 
 MyArray2 = MyArray + 5
 print(MyArray2)
+
+MyArray3 = MyArray * [10]
+print(MyArray3)
+
+MyArray4 = MyArray + [5]
+print(MyArray4)
