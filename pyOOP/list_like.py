@@ -17,7 +17,6 @@ MyList3 = MyList + [1, 2]
 print(MyList3)
 # MyList4 = MyList * [1, 2]
 
-
 print("numpy 배열")
 
 MyArray1 = MyArray * 10
