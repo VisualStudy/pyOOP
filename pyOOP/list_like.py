@@ -30,3 +30,27 @@ print(MyArray3)
 
 MyArray4 = MyArray + [5]
 print(MyArray4)
+
+print('Dictionary')
+
+student = {"name": "Jieun", "age": 20, "major": "Nursing"}
+print("기본 딕셔너리")
+print(student)
+print(student["name"])
+print(student["age"])
+print()
+
+print("값 추가하기")
+student["grade"] = "A"
+print(student)
+print()
+
+print("값 수정")
+student["age"] = 21
+print(student)
+print()
+
+print("값 삭제")
+del student["major"]
+print(student)
+print()
