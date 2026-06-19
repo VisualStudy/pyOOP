@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f66d5ca4-44a2-44fb-85f4-4119070cf40e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>list_like.py</StartupFile>
+    <StartupFile>bool_function.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,6 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="bool_function.py" />
     <Compile Include="class_magic.py" />
     <Compile Include="list_like.py" />
     <Compile Include="pygame\aden_fight\aden_precision_game\aden_precision_game\main.py" />
