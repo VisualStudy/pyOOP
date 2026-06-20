@@ -13,7 +13,7 @@
 
 class Truck(Vehicle):
     def __init__(self, make, model, color, price, payload):
-        super().__init(make, model, color, price)
+        super().__init__(make, model, color, price)
         self.payload = payload
 
     def setPayload(self, payload):
