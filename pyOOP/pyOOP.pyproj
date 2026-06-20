@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f66d5ca4-44a2-44fb-85f4-4119070cf40e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>inheritance\vehicle_super_non_super.py</StartupFile>
+    <StartupFile>module_package_inheritance_data_structure_oop\class_inherit.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -29,6 +29,11 @@
     <Compile Include="inheritance\vehicle_super_non_super.py" />
     <Compile Include="list_like.py" />
     <Compile Include="main_fibo_module.py" />
+    <Compile Include="module_package_inheritance_data_structure_oop\class_inherit.py" />
+    <Compile Include="module_package_inheritance_data_structure_oop\data_structure.py" />
+    <Compile Include="module_package_inheritance_data_structure_oop\main_module_fibo.py" />
+    <Compile Include="module_package_inheritance_data_structure_oop\main_module_fibo_wildcard.py" />
+    <Compile Include="module_package_inheritance_data_structure_oop\module_fibo.py" />
     <Compile Include="praxis_matplotlib\baisc_graph.py" />
     <Compile Include="pygame\aden_fight\aden_precision_game\aden_precision_game\main.py" />
     <Compile Include="pygame\aden_fight\aden_precision_game_v2\main.py" />
@@ -85,6 +90,7 @@
     <Folder Include="callpkg\" />
     <Folder Include="encapsulation\" />
     <Folder Include="inheritance\" />
+    <Folder Include="module_package_inheritance_data_structure_oop\" />
     <Folder Include="praxis_matplotlib\" />
     <Folder Include="pygame\" />
     <Folder Include="numPy\" />
