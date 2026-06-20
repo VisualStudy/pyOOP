@@ -26,6 +26,7 @@
     <Compile Include="fibo_module.py" />
     <Compile Include="inheritance\vehicle.py" />
     <Compile Include="inheritance\vehicle_super.py" />
+    <Compile Include="inheritance\vehicle_super_non_super.py" />
     <Compile Include="list_like.py" />
     <Compile Include="main_fibo_module.py" />
     <Compile Include="praxis_matplotlib\baisc_graph.py" />
