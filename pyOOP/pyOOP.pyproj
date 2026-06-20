@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f66d5ca4-44a2-44fb-85f4-4119070cf40e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>student_score_sort_program.py</StartupFile>
+    <StartupFile>main_fibo_module.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,7 +23,10 @@
   <ItemGroup>
     <Compile Include="bool_function.py" />
     <Compile Include="class_magic.py" />
+    <Compile Include="fibo_module.py" />
     <Compile Include="list_like.py" />
+    <Compile Include="main_fibo_module.py" />
+    <Compile Include="praxis_matplotlib\baisc_graph.py" />
     <Compile Include="pygame\aden_fight\aden_precision_game\aden_precision_game\main.py" />
     <Compile Include="pygame\aden_fight\aden_precision_game_v2\main.py" />
     <Compile Include="pygame\aden_fight\aden_precision_game_v3\main.py" />
@@ -79,6 +82,7 @@
     <Folder Include="callpkg\" />
     <Folder Include="encapsulation\" />
     <Folder Include="inheritance\" />
+    <Folder Include="praxis_matplotlib\" />
     <Folder Include="pygame\" />
     <Folder Include="numPy\" />
     <Folder Include="pygame\aden_fight\aden_precision_game\" />
