@@ -4,6 +4,7 @@
         self.model = model
         self.color = color
         self.price = price
+        print("부모 초기화 메서드 발동!")
 
     def setMake(self, make):
         self.make = make
@@ -21,3 +22,7 @@ class Truck(Vehicle):
 
     def getPayload(self):
         return self.payload
+
+dump = Truck("라바라타국", "부릉이", "빨강", "10억", "20톤")
+weight = dump.getPayload()
+print(weight)
