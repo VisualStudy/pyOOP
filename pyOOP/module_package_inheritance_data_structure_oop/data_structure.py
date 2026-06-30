@@ -17,3 +17,4 @@ myD2 = {}
 myS1 = {1, 2, 3}
 myS2 = set()
 
+aaa = list(myS2)
